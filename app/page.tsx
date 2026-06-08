@@ -1,36 +1,55 @@
-const logos = [
-  "/logo-mlp.png",
-  "/logo-phyllium.png",
-  "/logo-tripan.png",
+const kpis = [
+  "Stock General Actual",
+  "Lotes Registrados",
+  "Entradas VMA",
+  "Despachos EECC",
 ];
 
-function Section({
+const movimientos = [
+  "Traslados",
+  "Recepciones",
+  "Despachos",
+  "Devoluciones",
+  "Bajas",
+];
+
+function LogoBar() {
+  return (
+    <div className="logoBar">
+      <img src="/logo-mlp.png" alt="MLP" />
+      <img src="/logo-phyllium.png" alt="Phyllium" />
+      <img src="/logo-tripan.png" alt="Tripan" />
+    </div>
+  );
+}
+
+function Slide({
+  number,
   eyebrow,
   title,
   text,
-  image,
   children,
 }: {
+  number: string;
   eyebrow: string;
   title: string;
   text: string;
-  image?: string;
-  children?: React.ReactNode;
+  children: React.ReactNode;
 }) {
   return (
-    <section className="section">
-      <div className="copy">
-        <p className="eyebrow">{eyebrow}</p>
-        <h2>{title}</h2>
-        <p className="text">{text}</p>
-        {children}
+    <section className="slide">
+      <div className="slideHeader">
+        <span>{number}</span>
+        <p>{eyebrow}</p>
       </div>
 
-      {image && (
-        <div className="imageCard">
-          <img src={image} alt={title} />
+      <div className="slideGrid">
+        <div className="slideText">
+          <h2>{title}</h2>
+          <p>{text}</p>
         </div>
-      )}
+        <div>{children}</div>
+      </div>
     </section>
   );
 }
@@ -38,123 +57,141 @@ function Section({
 export default function Home() {
   return (
     <main>
-      <nav className="topbar">
-        <img src="/logo-sitrap.png" className="logoSitrap" />
-        <div className="logos">
-          {logos.map((logo) => (
-            <img key={logo} src={logo} />
-          ))}
-        </div>
-      </nav>
+      <section className="cover">
+        <LogoBar />
 
-      <section className="hero">
-        <div className="heroOverlay" />
-        <div className="heroContent">
-          <p className="eyebrow">Presentación Ejecutiva · Junio 2026</p>
-          <h1>SITRAP</h1>
-          <h3>Sistema de Inventario y Trazabilidad de Plantas</h3>
-          <p>
-            Plataforma digital para control operacional, inventario vivo,
-            trazabilidad, QR, tickets de despacho y reportabilidad ejecutiva.
-          </p>
+        <div className="coverGrid">
+          <div>
+            <img className="sitrapLogo" src="/logo-sitrap.png" alt="SITRAP" />
+            <p className="tag">Presentación Ejecutiva · Junio 2026</p>
+            <h1>SITRAP</h1>
+            <h3>Sistema de Inventario y Trazabilidad de Plantas</h3>
+            <p className="coverText">
+              Plataforma digital para control operacional, inventario vivo y
+              trazabilidad desde vivero hasta terreno.
+            </p>
+          </div>
+
+          <div className="coverCard">
+            <img src="/dashboard-sitrap.png" alt="Dashboard SITRAP" />
+          </div>
         </div>
       </section>
 
-      <Section
-        eyebrow="01 · Desafío operacional"
+      <Slide
+        number="01"
+        eyebrow="Desafío operacional"
         title="Del registro disperso al control trazable"
-        text="SITRAP responde a la necesidad de ordenar información crítica de viveros, lotes, movimientos, despachos y stock en una única plataforma confiable, auditable y disponible en terreno."
+        text="Antes de SITRAP, la información de lotes, movimientos y despachos se encontraba fragmentada en múltiples registros, dificultando la toma de decisiones y la trazabilidad operativa."
       >
-        <div className="grid4">
-          <span>Inventario vivo</span>
-          <span>QR por lote</span>
+        <img className="mainImage" src="/infograma-sitrap.png" alt="Arquitectura SITRAP" />
+        <div className="pillGrid">
+          <span>Inventario</span>
+          <span>Trazabilidad</span>
           <span>Movimientos</span>
           <span>Reportabilidad</span>
         </div>
-      </Section>
+      </Slide>
 
-      <Section
-        eyebrow="02 · Dashboard ejecutivo"
-        title="Control en tiempo real"
-        text="El dashboard consolida KPIs estratégicos, stock por vivero, especies, alertas, contratos y movimientos críticos para facilitar decisiones operacionales y ejecutivas."
-        image="/dashboard-sitrap.png"
-      />
+      <Slide
+        number="02"
+        eyebrow="Dashboard ejecutivo"
+        title="Control operacional en tiempo real"
+        text="SITRAP integra indicadores estratégicos y operacionales para apoyar la gestión de viveros, contratos, stock y movimientos críticos."
+      >
+        <div className="imageWithSide">
+          <img src="/dashboard-sitrap.png" alt="Dashboard SITRAP" />
+          <div className="sideKpis">
+            {kpis.map((kpi) => (
+              <span key={kpi}>{kpi}</span>
+            ))}
+          </div>
+        </div>
+      </Slide>
 
-      <Section
-        eyebrow="03 · Registro E1"
+      <Slide
+        number="03"
+        eyebrow="Registro E1"
         title="Codificación inteligente de lotes"
-        text="Cada lote se registra con datos estandarizados, origen, especie, vivero, calidad y trazabilidad histórica, permitiendo incorporar producción nueva y regularizar lotes existentes."
-        image="/e1-formulario-lotes.png"
-      />
-
-      <Section
-        eyebrow="04 · Identidad digital"
-        title="QR y etiqueta imprimible"
-        text="Cada lote adquiere una identidad digital única mediante código SITRAP, QR, etiqueta imprimible, PDF y formato compatible con impresión operacional."
-        image="/qr-lote-sitrap.png"
-      />
-
-      <Section
-        eyebrow="05 · Registro E2"
-        title="Movimientos operacionales trazables"
-        text="SITRAP permite registrar traslados, recepciones, despachos, bajas, devoluciones y transformaciones, manteniendo control de origen, destino, cantidades y responsables."
-        image="/e2-registro-movimientos.png"
-      />
-
-      <Section
-        eyebrow="06 · Consulta de lote"
-        title="Ficha rápida y ficha completa"
-        text="La consulta permite revisar stock, especie, vivero, calidad, historial y trazabilidad de cada lote, conectando información de gabinete con decisiones en terreno."
+        text="Cada lote incorpora identidad única y trazabilidad histórica mediante reglas estandarizadas para producción nueva y regularización de lotes existentes."
       >
-        <div className="triple">
-          <img src="/ficha-rapida-lote.png" />
-          <img src="/ficha-completa-lote.png" />
-          <img src="/ficha-lote-qr.png" />
+        <img className="mainImage vertical" src="/e1-formulario-lotes.png" alt="Formulario E1" />
+        <div className="process">
+          <span>Registro</span>
+          <span>Codificación</span>
+          <span>QR</span>
+          <span>Inventario</span>
         </div>
-      </Section>
+      </Slide>
 
-      <Section
-        eyebrow="07 · Despacho"
-        title="Ticket automático y respaldo documental"
-        text="Cada despacho puede generar comprobantes automáticos, consolidando especies, cantidades, contrato, EECC y datos logísticos para respaldo operacional."
+      <Slide
+        number="04"
+        eyebrow="Movimientos E2"
+        title="Trazabilidad completa del ciclo operacional"
+        text="Cada traslado, recepción, despacho, devolución o baja queda registrado y vinculado al historial del lote."
       >
-        <div className="double">
-          <img src="/ticket-despacho-a4.png" />
-          <img src="/ticket-termico-58mm.png" />
+        <div className="imageWithSide">
+          <img src="/e2-registro-movimientos.png" alt="Formulario E2" />
+          <div className="sideKpis">
+            {movimientos.map((m) => (
+              <span key={m}>{m}</span>
+            ))}
+          </div>
         </div>
-      </Section>
+      </Slide>
 
-      <Section
-        eyebrow="08 · Operación móvil"
-        title="SITRAP en terreno"
-        text="La aplicación móvil permite consultar lotes, acceder a QR, revisar fichas y apoyar operaciones desde vivero, despacho o terreno."
-        image="/app-movil-sitrap.png"
-      />
+      <Slide
+        number="05"
+        eyebrow="Consulta de lotes"
+        title="Información disponible en terreno"
+        text="Las fichas permiten revisar datos esenciales, historial técnico y trazabilidad de cada lote desde dispositivos móviles."
+      >
+        <div className="twoImages">
+          <img src="/ficha-rapida-lote.png" alt="Ficha rápida" />
+          <img src="/ficha-completa-lote.png" alt="Ficha completa" />
+        </div>
+      </Slide>
 
-      <Section
-        eyebrow="09 · Arquitectura"
-        title="Sistema integrado de trazabilidad"
-        text="SITRAP conecta formularios, base de datos, dashboard web, aplicación móvil, QR, tickets e indicadores, utilizando una arquitectura simple y escalable."
-        image="/infograma-sitrap.png"
-      />
+      <Slide
+        number="06"
+        eyebrow="Identidad digital"
+        title="Identificación física y digital"
+        text="Cada bandeja puede ser identificada y consultada mediante código QR, conectando el lote físico con su información digital."
+      >
+        <div className="twoImages">
+          <img src="/qr-lote-sitrap.png" alt="QR lote" />
+          <img src="/ficha-lote-qr.png" alt="Ficha QR" />
+        </div>
+      </Slide>
+
+      <Slide
+        number="07"
+        eyebrow="Despacho"
+        title="Despacho trazable hasta destino"
+        text="Los despachos generan respaldo documental automático, asegurando continuidad entre vivero, transporte y recepción en terreno."
+      >
+        <div className="twoImages">
+          <img src="/ticket-despacho-sitrap.png" alt="Ticket despacho" />
+          <img src="/ticket-termico-58mm.png" alt="Ticket térmico" />
+        </div>
+      </Slide>
 
       <section className="closing">
-        <p className="eyebrow">10 · Valor estratégico para MLP</p>
-        <h2>Una plataforma auditable para programas de restauración</h2>
+        <img src="/logo-sitrap-icon.png" alt="SITRAP icon" />
+        <h2>Valor estratégico para Minera Los Pelambres</h2>
+        <p>
+          De la producción a la restauración: información confiable,
+          trazable y oportuna para decisiones operacionales.
+        </p>
 
         <div className="benefits">
           <span>Trazabilidad vivero-terreno</span>
-          <span>Reducción de errores manuales</span>
           <span>Información en tiempo real</span>
-          <span>Control por contratos y EECC</span>
-          <span>Respaldo documental automático</span>
-          <span>Escalable a otros programas ambientales</span>
+          <span>Reducción de errores manuales</span>
+          <span>Control por contratos</span>
+          <span>Respaldo documental</span>
+          <span>Escalable a otros programas</span>
         </div>
-
-        <p className="finalText">
-          SITRAP no es solamente un sistema de inventario. Es una plataforma de
-          trazabilidad operacional que conecta el mundo físico con el digital.
-        </p>
       </section>
     </main>
   );
