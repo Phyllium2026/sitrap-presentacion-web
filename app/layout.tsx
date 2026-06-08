@@ -1,6 +1,8 @@
+import "./globals.css";
+
 export const metadata = {
   title: "SITRAP Presentación Ejecutiva",
-  description: "Sistema de Inventario y Trazabilidad de Plantas"
+  description: "Sistema de Inventario y Trazabilidad de Plantas",
 };
 
 export default function RootLayout({
@@ -10,9 +12,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body style={{ margin: 0 }}>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
