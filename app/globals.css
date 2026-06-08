@@ -30,30 +30,12 @@ img {
   max-width: 100%;
 }
 
-.logoBar {
-  position: absolute;
-  top: 34px;
-  right: 48px;
-  z-index: 5;
-  display: flex;
-  gap: 22px;
-  align-items: center;
-  padding: 12px 18px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.92);
-}
-
-.logoBar img {
-  max-height: 34px;
-  max-width: 120px;
-  object-fit: contain;
-}
-
 .cover {
   min-height: 100vh;
   position: relative;
-  padding: 110px 7vw 70px;
+  padding: 120px 7vw 70px;
   background:
+    radial-gradient(circle at 82% 10%, rgba(255, 255, 255, 0.18), transparent 24%),
     radial-gradient(circle at 80% 20%, rgba(127, 174, 92, 0.25), transparent 30%),
     linear-gradient(135deg, #0b1e2d 0%, #123927 70%, #1f6b3a 100%);
   color: white;
@@ -71,6 +53,69 @@ img {
   background: rgba(255, 255, 255, 0.08);
 }
 
+.institutionalBlock {
+  position: absolute;
+  top: 36px;
+  right: 58px;
+  z-index: 5;
+  text-align: right;
+  padding: 20px 24px;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.035));
+  backdrop-filter: blur(8px);
+}
+
+.institutionalLabel {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #d6efe0;
+}
+
+.authorName {
+  margin: 9px 0 4px;
+  font-size: 22px;
+  color: white;
+}
+
+.authorRole {
+  margin: 0 0 15px;
+  color: #dcefe2;
+  font-size: 14px;
+}
+
+.phylliumLead img {
+  max-height: 42px;
+  object-fit: contain;
+  margin-bottom: 18px;
+}
+
+.institutionalPartners {
+  display: flex;
+  justify-content: flex-end;
+  gap: 34px;
+}
+
+.institutionalPartners div {
+  text-align: center;
+}
+
+.institutionalPartners span {
+  display: block;
+  margin-bottom: 9px;
+  font-size: 10px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: #d6efe0;
+}
+
+.institutionalPartners img {
+  max-height: 34px;
+  object-fit: contain;
+}
+
 .coverGrid {
   min-height: 74vh;
   display: grid;
@@ -82,10 +127,10 @@ img {
 }
 
 .sitrapLogo {
-  width: 260px;
-  max-height: 170px;
+  width: 250px;
+  max-height: 165px;
   object-fit: contain;
-  margin-bottom: 34px;
+  margin-bottom: 30px;
   background: white;
   padding: 18px;
   border-radius: 24px;
@@ -100,7 +145,7 @@ img {
 }
 
 h1 {
-  font-size: clamp(76px, 10vw, 160px);
+  font-size: clamp(76px, 10vw, 150px);
   line-height: 0.9;
   margin: 12px 0 20px;
   letter-spacing: -6px;
@@ -117,21 +162,36 @@ h2 {
 h3 {
   font-size: clamp(30px, 3.6vw, 54px);
   line-height: 1.05;
-  margin: 0 0 28px;
+  margin: 0 0 26px;
   color: #eef8ef;
 }
 
 .coverText {
-  font-size: 24px;
-  line-height: 1.55;
+  font-size: 23px;
+  line-height: 1.5;
   color: #eef8ef;
   max-width: 760px;
 }
 
+.coverSecondary {
+  margin-top: 24px;
+  max-width: 720px;
+  color: #dcefe2;
+  line-height: 1.65;
+  font-size: 17px;
+}
+
+.coverQuote {
+  margin-top: 34px;
+  font-size: 27px;
+  font-style: italic;
+  color: #c9f4d5;
+}
+
 .coverCard {
-  padding: 18px;
+  padding: 14px;
   border-radius: 34px;
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 35px 100px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(8px);
 }
@@ -330,12 +390,16 @@ h3 {
 }
 
 @media (max-width: 950px) {
-  .logoBar {
+  .institutionalBlock {
     position: relative;
     top: auto;
     right: auto;
-    margin-bottom: 32px;
-    flex-wrap: wrap;
+    text-align: left;
+    margin-bottom: 34px;
+  }
+
+  .institutionalPartners {
+    justify-content: flex-start;
   }
 
   .cover,
