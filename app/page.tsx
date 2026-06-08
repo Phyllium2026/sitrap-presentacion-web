@@ -13,16 +13,6 @@ const movimientos = [
   "Bajas",
 ];
 
-function LogoBar() {
-  return (
-    <div className="logoBar">
-      <img src="/logo-mlp.png" alt="MLP" />
-      <img src="/logo-phyllium.png" alt="Phyllium" />
-      <img src="/logo-tripan.png" alt="Tripan" />
-    </div>
-  );
-}
-
 function Slide({
   number,
   eyebrow,
@@ -58,17 +48,57 @@ export default function Home() {
   return (
     <main>
       <section className="cover">
-        <LogoBar />
+        <div className="institutionalBlock">
+          <p className="institutionalLabel">
+            Presentación ejecutiva elaborada por
+          </p>
+
+          <h4 className="authorName">Eduardo Villalobos Ordóñez</h4>
+
+          <p className="authorRole">
+            ITO Vivero Monte Aranda · Phyllium Consultores
+          </p>
+
+          <div className="phylliumLead">
+            <img src="/logo-phyllium.png" alt="Phyllium Consultores" />
+          </div>
+
+          <div className="institutionalPartners">
+            <div>
+              <span>Mandante</span>
+              <img src="/logo-mlp.png" alt="Minera Los Pelambres" />
+            </div>
+
+            <div>
+              <span>Operación Vivero</span>
+              <img src="/logo-tripan.png" alt="Tripan" />
+            </div>
+          </div>
+        </div>
 
         <div className="coverGrid">
           <div>
             <img className="sitrapLogo" src="/logo-sitrap.png" alt="SITRAP" />
+
             <p className="tag">Presentación Ejecutiva · Junio 2026</p>
+
             <h1>SITRAP</h1>
+
             <h3>Sistema de Inventario y Trazabilidad de Plantas</h3>
+
             <p className="coverText">
               Plataforma digital para control operacional, inventario vivo y
               trazabilidad desde vivero hasta terreno.
+            </p>
+
+            <p className="coverSecondary">
+              Iniciativa de mejora operacional desarrollada desde la función de
+              Inspección Técnica de Obras para fortalecer la trazabilidad, el
+              control de inventario y la reportabilidad del Vivero Monte Aranda.
+            </p>
+
+            <p className="coverQuote">
+              “Desde el vivero hasta terreno, cada planta tiene historia.”
             </p>
           </div>
 
@@ -84,7 +114,11 @@ export default function Home() {
         title="Del registro disperso al control trazable"
         text="Antes de SITRAP, la información de lotes, movimientos y despachos se encontraba fragmentada en múltiples registros, dificultando la toma de decisiones y la trazabilidad operativa."
       >
-        <img className="mainImage" src="/infograma-sitrap.png" alt="Arquitectura SITRAP" />
+        <img
+          className="mainImage"
+          src="/infograma-sitrap.png"
+          alt="Arquitectura SITRAP"
+        />
         <div className="pillGrid">
           <span>Inventario</span>
           <span>Trazabilidad</span>
@@ -115,7 +149,11 @@ export default function Home() {
         title="Codificación inteligente de lotes"
         text="Cada lote incorpora identidad única y trazabilidad histórica mediante reglas estandarizadas para producción nueva y regularización de lotes existentes."
       >
-        <img className="mainImage vertical" src="/e1-formulario-lotes.png" alt="Formulario E1" />
+        <img
+          className="mainImage vertical"
+          src="/e1-formulario-lotes.png"
+          alt="Formulario E1"
+        />
         <div className="process">
           <span>Registro</span>
           <span>Codificación</span>
@@ -180,8 +218,8 @@ export default function Home() {
         <img src="/logo-sitrap-icon.png" alt="SITRAP icon" />
         <h2>Valor estratégico para Minera Los Pelambres</h2>
         <p>
-          De la producción a la restauración: información confiable,
-          trazable y oportuna para decisiones operacionales.
+          De la producción a la restauración: información confiable, trazable y
+          oportuna para decisiones operacionales.
         </p>
 
         <div className="benefits">
